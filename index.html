@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" data-i18n="meta.description" content="GeriBand — Sabuk pintar pendeteksi jatuh untuk menjaga orang tua tercinta yang sudah lanjut usia, berbasis IoT.">
+  <meta name="theme-color" content="#6499e9">
+  <title data-i18n="meta.title">GeriBand — Lindungi Orang Tua Tercinta dari Risiko Jatuh</title>
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/index.css">
+
+  <!-- ══════════════════════════════════════════════════
+       Pre-load screen — shown until all assets are ready
+       Inlined so it appears BEFORE the external CSS loads.
+       ══════════════════════════════════════════════════ -->
+  <style id="preload-styles">
+    html, body { margin: 0; padding: 0; background: #eef1f8; }
+
+    body.preloading { overflow: hidden !important; }
+    body.preloading > *:not(#page-loader) { visibility: hidden !important; }
+
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      background: #eef1f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+    #page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #page-loader .spinner {
+      width: 54px;
+      height: 54px;
+      border: 4px solid rgba(91,140,216,0.18);
+      border-top-color: #1e4e8c;
+      border-radius: 50%;
+      animation: pl-spin 0.9s linear infinite;
+    }
+    @keyframes pl-spin {
+      to { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #page-loader .spinner { animation-duration: 1.8s; }
+    }
+  </style>
+
+</head>
+<body class="preloading">
+
+<!-- ══════════════════════════════════════════════════
+     Pre-load spinner — removed once all assets are ready
+     ══════════════════════════════════════════════════ -->
+<div id="page-loader" role="status" aria-live="polite" aria-label="Memuat halaman">
+  <div class="spinner"></div>
+</div>
+
+<!-- ── Navigation ── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">
+      <img src="assets/icon.png" alt="GeriBand">
+      <span class="nav-logo-name">GeriBand</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how-it-works"  data-i18n="nav.howItWorks">Cara Kerja</a>
+      <a href="#features"      data-i18n="nav.features">Fitur</a>
+      <a href="#tech"          data-i18n="nav.tech">Teknologi</a>
+      <a href="#team"          data-i18n="nav.team">Tim</a>
+      <a href="#partners"      data-i18n="nav.partners">Partner</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="id" aria-label="Bahasa Indonesia">ID</button>
+        <button type="button" class="lang-btn"        data-lang="en" aria-label="English">EN</button>
+      </div>
+      <a href="auth.html" class="nav-cta" data-i18n="nav.cta">Buka Aplikasi</a>
+    </div>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Mobile Menu ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how-it-works" onclick="closeMobile()" data-i18n="nav.howItWorks">Cara Kerja</a>
+  <a href="#features"     onclick="closeMobile()" data-i18n="nav.features">Fitur</a>
+  <a href="#tech"         onclick="closeMobile()" data-i18n="nav.tech">Teknologi</a>
+  <a href="#team"         onclick="closeMobile()" data-i18n="nav.team">Tim</a>
+  <a href="#partners"     onclick="closeMobile()" data-i18n="nav.partners">Partner</a>
+  <div class="lang-toggle lang-toggle-mobile" role="group" aria-label="Language">
+    <button type="button" class="lang-btn active" data-lang="id" aria-label="Bahasa Indonesia">ID</button>
+    <button type="button" class="lang-btn"        data-lang="en" aria-label="English">EN</button>
+  </div>
+  <a href="auth.html" class="nav-cta" onclick="closeMobile()" data-i18n="nav.cta">Buka Aplikasi</a>
+</div>
+
+<!-- ══════════════════════════════════════════════ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span data-i18n="hero.badge">IoT Smart Health</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-i18n="hero.titlePart1">Lindungi</span>
+        <span class="gradient-text" data-i18n="hero.titleHighlight1">Orang Tua Tercinta</span><br>
+        <span data-i18n="hero.titlePart2">dari Risiko</span>
+        <span class="accent-text" data-i18n="hero.titleHighlight2">Jatuh</span>
+      </h1>
+      <p class="hero-desc" data-i18n="hero.desc">
+        GeriBand adalah sabuk pintar berbasis IoT yang mendeteksi jatuh secara langsung,
+        mengirim peringatan darurat, dan membantu Anda menjaga ayah-ibu tercinta yang sudah lanjut usia dari mana saja melalui smartphone.
+      </p>
+      <div class="hero-actions">
+        <a href="auth.html" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+          <span data-i18n="hero.ctaPrimary">Mulai Pantau Sekarang</span>
+        </a>
+        <a href="#how-it-works" class="btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="10 8 16 12 10 16 10 8"/>
+          </svg>
+          <span data-i18n="hero.ctaSecondary">Lihat Demo</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-value">±0.5°</div>
+          <div class="hero-stat-label" data-i18n="hero.stat1Label">Akurasi sudut</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div>
+          <div class="hero-stat-value">&lt;2s</div>
+          <div class="hero-stat-label" data-i18n="hero.stat2Label">Respons deteksi</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div>
+          <div class="hero-stat-value">24/7</div>
+          <div class="hero-stat-label" data-i18n="hero.stat3Label">Monitoring aktif</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-device-card">
+        <div class="device-img-placeholder" id="deviceImgWrap">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#6499e9" stroke-width="1.5" stroke-linecap="round">
+            <rect x="5" y="2" width="14" height="20" rx="3"/>
+            <circle cx="12" cy="17" r="1"/>
+            <line x1="9" y1="6" x2="15" y2="6"/>
+          </svg>
+          <span data-i18n="hero.devicePhoto">Foto Alat</span>
+        </div>
+        <div class="device-chip">
+          <div class="device-chip-dot"></div>
+          <span data-i18n="hero.sensorActive">Sensor Aktif</span>
+        </div>
+      </div>
+
+      <div class="hero-float-card hero-float-card-1">
+        <div class="float-icon float-icon-blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div>
+          <div class="float-card-title" data-i18n="hero.floatCard1Title">Data Real-time</div>
+          <div class="float-card-sub"   data-i18n="hero.floatCard1Sub">Akselerometer &amp; Giroskop</div>
+        </div>
+      </div>
+
+      <div class="hero-float-card hero-float-card-2">
+        <div class="float-icon float-icon-green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        </div>
+        <div>
+          <div class="float-card-title" data-i18n="hero.floatCard2Title">Notifikasi Instan</div>
+          <div class="float-card-sub"   data-i18n="hero.floatCard2Sub">Push &amp; Suara Darurat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ HOW IT WORKS ══ -->
+<section class="section hiw-bg" id="how-it-works">
+  <div class="container">
+    <div class="text-center fade-in">
+      <span class="section-tag"    data-i18n="hiw.tag">Cara Kerja</span>
+      <h2 class="section-title"    data-i18n="hiw.title">Tiga Langkah Mudah</h2>
+      <p  class="section-desc centered" data-i18n="hiw.desc">
+        Teknologi canggih yang dikemas menjadi pengalaman sederhana — dari pemasangan sabuk hingga pemantauan jarak jauh.
+      </p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card fade-in fade-in-delay-1">
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="step-title"      data-i18n="hiw.step1Title">Pasang Sabuk GeriBand</div>
+        <p class="step-desc"         data-i18n="hiw.step1Desc">Ayah atau ibu cukup memakai sabuk GeriBand di pinggang seperti sabuk biasa. Sensor di dalamnya siap memantau setiap gerakan dengan presisi.</p>
+      </div>
+
+      <div class="step-card fade-in fade-in-delay-2">
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <path d="M12 18h.01"/>
+          </svg>
+        </div>
+        <div class="step-title"      data-i18n="hiw.step2Title">Hubungkan via Bluetooth</div>
+        <p class="step-desc"         data-i18n="hiw.step2Desc">Buka aplikasi GeriBand di smartphone, lalu hubungkan ke sabuk melalui Bluetooth. Koneksi stabil dalam radius 10 meter tanpa Internet sekalipun.</p>
+      </div>
+
+      <div class="step-card fade-in fade-in-delay-3">
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        </div>
+        <div class="step-title"      data-i18n="hiw.step3Title">Terima Peringatan Darurat</div>
+        <p class="step-desc"         data-i18n="hiw.step3Desc">Saat jatuh terdeteksi, sistem langsung memicu alarm suara, notifikasi ke ponsel, dan mencatat kejadian ke riwayat secara otomatis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ FEATURES ══ -->
+<section class="section features-bg" id="features">
+  <div class="container">
+    <div class="text-center fade-in">
+      <span class="section-tag" data-i18n="feat.tag">Fitur Unggulan</span>
+      <h2 class="section-title">
+        <span data-i18n="feat.titlePart1">Lengkap, Andal,</span>
+        <span class="gradient-text" data-i18n="feat.titleHighlight">Cerdas</span>
+      </h2>
+      <p class="section-desc centered" data-i18n="feat.desc">
+        Dirancang khusus untuk membantu Anda menjaga orang tua tercinta yang sudah lanjut usia — dengan teknologi terkini yang tetap mudah digunakan.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card fade-in fade-in-delay-1">
+        <div class="feature-icon fi-red">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="feature-body">
+          <div class="feature-title" data-i18n="feat.1Title">Deteksi Jatuh Otomatis</div>
+          <p class="feature-desc"    data-i18n="feat.1Desc">Algoritma cerdas berbasis sensor gerak mendeteksi kejadian jatuh secara real-time dengan respons kurang dari 2 detik.</p>
+        </div>
+      </div>
+
+      <div class="feature-card fade-in fade-in-delay-2">
+        <div class="feature-icon fi-blue">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <path d="M9 22v-4h6v4"/>
+            <path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/>
+          </svg>
+        </div>
+        <div class="feature-body">
+          <div class="feature-title" data-i18n="feat.2Title">Konektivitas Stabil</div>
+          <p class="feature-desc"    data-i18n="feat.2Desc">Koneksi Bluetooth hemat daya dengan jangkauan 10 meter. Otomatis menyambung ulang saat koneksi terputus.</p>
+        </div>
+      </div>
+
+      <div class="feature-card fade-in fade-in-delay-3">
+        <div class="feature-icon fi-yellow">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        </div>
+        <div class="feature-body">
+          <div class="feature-title" data-i18n="feat.3Title">Notifikasi &amp; Alarm</div>
+          <p class="feature-desc"    data-i18n="feat.3Desc">Notifikasi push langsung ke ponsel pengasuh, disertai alarm suara darurat dari perangkat untuk respons cepat.</p>
+        </div>
+      </div>
+
+      <div class="feature-card fade-in fade-in-delay-4">
+        <div class="feature-icon fi-green">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="feature-body">
+          <div class="feature-title" data-i18n="feat.4Title">Riwayat Kejadian Lengkap</div>
+          <p class="feature-desc"    data-i18n="feat.4Desc">Semua kejadian tersimpan aman di cloud. Filter berdasarkan tanggal dan pantau tren kesehatan orang tua tercinta dari waktu ke waktu.</p>
+        </div>
+      </div>
+
+      <div class="feature-card fade-in fade-in-delay-5">
+        <div class="feature-icon fi-purple">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="feature-body">
+          <div class="feature-title" data-i18n="feat.5Title">Pantauan Real-time</div>
+          <p class="feature-desc"    data-i18n="feat.5Desc">Pantau posisi dan aktivitas orang tua tercinta secara langsung dari aplikasi — berdiri, duduk, berbaring, atau jatuh.</p>
+        </div>
+      </div>
+
+      <div class="feature-card fade-in fade-in-delay-1">
+        <div class="feature-icon fi-teal">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          </svg>
+        </div>
+        <div class="feature-body">
+          <div class="feature-title" data-i18n="feat.6Title">Bisa di-Install seperti Aplikasi</div>
+          <p class="feature-desc"    data-i18n="feat.6Desc">Aplikasi web progresif yang dapat diinstal di HP seperti aplikasi native. Akses offline dan tampilan full-screen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ TECH SPECS ══ -->
+<section class="section specs-bg" id="tech">
+  <div class="container">
+    <div class="text-center fade-in">
+      <span class="section-tag" data-i18n="tech.tag">Spesifikasi Teknis</span>
+      <h2 class="section-title">
+        <span data-i18n="tech.titlePart1">Dibangun dengan</span><br>
+        <span data-i18n="tech.titlePart2">Teknologi Terpercaya</span>
+      </h2>
+      <p class="section-desc centered" style="color:rgba(255,255,255,0.6);" data-i18n="tech.desc">
+        Kombinasi hardware IoT berkualitas tinggi dengan platform cloud modern untuk keandalan 24/7.
+      </p>
+    </div>
+
+    <div class="specs-grid fade-in fade-in-delay-1">
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(100,153,233,0.7)" stroke-width="1.5" stroke-linecap="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-4 0v2M8 21v-4M16 21v-4"/>
+          </svg>
+        </div>
+        <div class="spec-value">ESP32</div>
+        <div class="spec-label" data-i18n="tech.spec1">Mikrokontroler</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(100,153,233,0.7)" stroke-width="1.5" stroke-linecap="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="spec-value">MPU6050</div>
+        <div class="spec-label" data-i18n="tech.spec2">Sensor Gerak 6-Axis</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(100,153,233,0.7)" stroke-width="1.5" stroke-linecap="round">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+            <line x1="12" y1="20" x2="12.01" y2="20"/>
+          </svg>
+        </div>
+        <div class="spec-value">BLE 5.0</div>
+        <div class="spec-label" data-i18n="tech.spec3">Bluetooth Low Energy</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(100,153,233,0.7)" stroke-width="1.5" stroke-linecap="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="spec-value">Firebase</div>
+        <div class="spec-label" data-i18n="tech.spec4">Cloud Realtime DB</div>
+      </div>
+    </div>
+
+    <div class="specs-grid fade-in fade-in-delay-2" style="margin-top:1px;">
+      <div class="spec-item">
+        <div class="spec-value">&lt;2s</div>
+        <div class="spec-label" data-i18n="tech.spec5">Latensi Deteksi</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-value">±0.5°</div>
+        <div class="spec-label" data-i18n="tech.spec6">Akurasi Sudut</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-value">10m</div>
+        <div class="spec-label" data-i18n="tech.spec7">Jangkauan Bluetooth</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-value">100Hz</div>
+        <div class="spec-label" data-i18n="tech.spec8">Sampling Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ PARTNERS ══ -->
+<section class="section partners-bg" id="partners">
+  <div class="container">
+    <div class="text-center fade-in">
+      <span class="section-tag"      data-i18n="part.tag">Partner &amp; Dukungan</span>
+      <h2 class="section-title"      data-i18n="part.title">Didukung Bersama</h2>
+      <p class="section-desc centered" data-i18n="part.desc">
+        GeriBand dikembangkan bersama institusi dan mitra yang peduli terhadap keselamatan dan kesehatan orang tua tercinta di Indonesia.
+      </p>
+    </div>
+
+    <div class="partners-grid">
+      <div class="partner-slot fade-in fade-in-delay-1">
+        <div class="partner-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6499e9" stroke-width="1.5" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span><span data-i18n="part.logo">Logo Partner</span> 1</span>
+        </div>
+      </div>
+
+      <div class="partner-slot fade-in fade-in-delay-2">
+        <div class="partner-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6499e9" stroke-width="1.5" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span><span data-i18n="part.logo">Logo Partner</span> 2</span>
+        </div>
+      </div>
+
+      <div class="partner-slot fade-in fade-in-delay-3">
+        <div class="partner-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6499e9" stroke-width="1.5" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span><span data-i18n="part.logo">Logo Partner</span> 3</span>
+        </div>
+      </div>
+
+      <div class="partner-slot fade-in fade-in-delay-4">
+        <div class="partner-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6499e9" stroke-width="1.5" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span><span data-i18n="part.logo">Logo Partner</span> 4</span>
+        </div>
+      </div>
+
+      <div class="partner-slot fade-in fade-in-delay-5">
+        <div class="partner-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6499e9" stroke-width="1.5" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span><span data-i18n="part.logo">Logo Partner</span> 5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ TEAM ══ -->
+<section class="section team-bg" id="team">
+  <div class="container">
+    <div class="text-center fade-in">
+      <span class="section-tag" data-i18n="team.tag">Tim Pengembang</span>
+      <h2 class="section-title">
+        <span data-i18n="team.titlePart1">Orang-orang di Balik</span>
+        <span class="gradient-text">GeriBand</span>
+      </h2>
+      <p class="section-desc centered" data-i18n="team.desc">
+        Tim muda berdedikasi yang bersatu untuk menciptakan solusi teknologi kesehatan untuk menjaga orang tua tercinta di Indonesia.
+      </p>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card fade-in fade-in-delay-1">
+        <div class="team-avatar">
+          <div class="team-avatar-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-name">Khaireel Karim</div>
+        <div class="team-divider"></div>
+      </div>
+
+      <div class="team-card fade-in fade-in-delay-2">
+        <div class="team-avatar">
+          <div class="team-avatar-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-name">Muhammad Fakhruddin</div>
+        <div class="team-divider"></div>
+      </div>
+
+      <div class="team-card fade-in fade-in-delay-3">
+        <div class="team-avatar">
+          <div class="team-avatar-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-name">Ahmad Ghozatul Fawwaz</div>
+        <div class="team-divider"></div>
+      </div>
+
+      <div class="team-card fade-in fade-in-delay-4">
+        <div class="team-avatar">
+          <div class="team-avatar-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-name">Muhammad Nayaka Akbar</div>
+        <div class="team-divider"></div>
+      </div>
+
+      <div class="team-card fade-in fade-in-delay-5">
+        <div class="team-avatar">
+          <div class="team-avatar-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-name">Muhammad Ihsan</div>
+        <div class="team-divider"></div>
+      </div>
+
+      <div class="team-card fade-in fade-in-delay-1">
+        <div class="team-avatar">
+          <div class="team-avatar-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-name">Ar-Rayyan Fikri</div>
+        <div class="team-divider"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ CTA ══ -->
+<section class="cta-section" id="cta">
+  <div class="cta-blob cta-blob-1"></div>
+  <div class="cta-blob cta-blob-2"></div>
+  <div class="container cta-inner text-center fade-in">
+    <div class="hero-badge" style="justify-content:center;background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:#fff;margin-bottom:24px;">
+      <div class="hero-badge-dot"></div>
+      <span data-i18n="cta.badge">Tersedia Sekarang</span>
+    </div>
+    <h2 class="cta-title" data-i18n="cta.title" data-i18n-html>Mulai Lindungi Orang Tua Tercinta<br>Hari Ini</h2>
+    <p class="cta-desc"   data-i18n="cta.desc"  data-i18n-html>
+      Daftar gratis dan hubungkan perangkat GeriBand dalam hitungan menit.<br>
+      Ketenangan pikiran Anda, keselamatan mereka.
+    </p>
+    <div class="cta-actions">
+      <a href="auth.html" class="btn-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+          <polyline points="10 17 15 12 10 7"/>
+          <line x1="15" y1="12" x2="3" y2="12"/>
+        </svg>
+        <span data-i18n="cta.primary">Daftar Gratis</span>
+      </a>
+      <a href="#how-it-works" class="btn-white-outline" data-i18n="cta.secondary">Pelajari Lebih Lanjut</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">
+    <img src="assets/icon.png" alt="GeriBand">
+    <span class="footer-logo-name">GeriBand</span>
+  </div>
+  <p class="footer-tagline" data-i18n="footer.tagline">Pendeteksi Jatuh Cerdas untuk Menjaga Orang Tua Tercinta — Didukung IoT</p>
+  <div class="footer-links">
+    <a href="#hero"          data-i18n="footer.home">Beranda</a>
+    <a href="#how-it-works"  data-i18n="nav.howItWorks">Cara Kerja</a>
+    <a href="#features"      data-i18n="nav.features">Fitur</a>
+    <a href="#tech"          data-i18n="nav.tech">Teknologi</a>
+    <a href="#team"          data-i18n="nav.team">Tim</a>
+    <a href="#partners"      data-i18n="nav.partners">Partner</a>
+    <a href="auth.html"      data-i18n="footer.app">Aplikasi</a>
+  </div>
+  <div class="footer-copy" data-i18n="footer.copy">
+    &copy; 2025 GeriBand. Dikembangkan dengan cinta untuk orang tua tercinta di Indonesia.
+  </div>
+</footer>
+
+<script>
+  /* ══════════════════════════════════════════════════
+     i18n — Bilingual toggle (ID / EN)
+     ══════════════════════════════════════════════════ */
+  const I18N = {
+    id: {
+      'meta.title':        'GeriBand — Lindungi Orang Tua Tercinta dari Risiko Jatuh',
+      'meta.description':  'GeriBand — Sabuk pintar pendeteksi jatuh untuk menjaga orang tua tercinta yang sudah lanjut usia, berbasis IoT.',
+
+      'nav.howItWorks':    'Cara Kerja',
+      'nav.features':      'Fitur',
+      'nav.tech':          'Teknologi',
+      'nav.team':          'Tim',
+      'nav.partners':      'Partner',
+      'nav.cta':           'Buka Aplikasi',
+
+      'hero.badge':        'IoT Smart Health ',
+      'hero.titlePart1':   'Lindungi',
+      'hero.titleHighlight1': 'Orang Tua Tercinta',
+      'hero.titlePart2':   'dari Risiko',
+      'hero.titleHighlight2': 'Jatuh',
+      'hero.desc':         'GeriBand adalah sabuk pintar berbasis IoT yang mendeteksi jatuh secara langsung, mengirim peringatan darurat, dan membantu Anda menjaga ayah-ibu tercinta yang sudah lanjut usia dari mana saja melalui smartphone.',
+      'hero.ctaPrimary':   'Mulai Pantau Sekarang',
+      'hero.ctaSecondary': 'Lihat Demo',
+      'hero.stat1Label':   'Akurasi sudut',
+      'hero.stat2Label':   'Respons deteksi',
+      'hero.stat3Label':   'Pemantauan aktif',
+      'hero.devicePhoto':  'Foto Alat',
+      'hero.sensorActive': 'Sensor Aktif',
+      'hero.floatCard1Title': 'Data Real-time',
+      'hero.floatCard1Sub':   'Akselerometer & Giroskop',
+      'hero.floatCard2Title': 'Notifikasi Instan',
+      'hero.floatCard2Sub':   'Push & Suara Darurat',
+
+      'hiw.tag':           'Cara Kerja',
+      'hiw.title':         'Tiga Langkah Mudah',
+      'hiw.desc':          'Teknologi canggih yang dikemas menjadi pengalaman sederhana — dari pemasangan sabuk hingga pemantauan jarak jauh.',
+      'hiw.step1Title':    'Pasang Sabuk GeriBand',
+      'hiw.step1Desc':     'Ayah atau ibu cukup memakai sabuk GeriBand di pinggang seperti sabuk biasa. Sensor di dalamnya siap memantau setiap gerakan dengan presisi.',
+      'hiw.step2Title':    'Hubungkan via Bluetooth',
+      'hiw.step2Desc':     'Buka aplikasi GeriBand di smartphone, lalu hubungkan ke sabuk melalui Bluetooth. Koneksi stabil dalam radius 10 meter tanpa Internet sekalipun.',
+      'hiw.step3Title':    'Terima Peringatan Darurat',
+      'hiw.step3Desc':     'Saat jatuh terdeteksi, sistem langsung memicu alarm suara, notifikasi ke ponsel, dan mencatat kejadian ke riwayat secara otomatis.',
+
+      'feat.tag':          'Fitur Unggulan',
+      'feat.titlePart1':   'Lengkap, Andal,',
+      'feat.titleHighlight': 'Cerdas',
+      'feat.desc':         'Dirancang khusus untuk membantu Anda menjaga orang tua tercinta yang sudah lanjut usia — dengan teknologi terkini yang tetap mudah digunakan.',
+      'feat.1Title':       'Deteksi Jatuh Otomatis',
+      'feat.1Desc':        'Algoritma cerdas berbasis sensor gerak mendeteksi kejadian jatuh secara real-time dengan respons kurang dari 2 detik.',
+      'feat.2Title':       'Konektivitas Stabil',
+      'feat.2Desc':        'Koneksi Bluetooth hemat daya dengan jangkauan 10 meter. Otomatis menyambung ulang saat koneksi terputus.',
+      'feat.3Title':       'Notifikasi & Alarm',
+      'feat.3Desc':        'Notifikasi push langsung ke ponsel pengasuh, disertai alarm suara darurat dari perangkat untuk respons cepat.',
+      'feat.4Title':       'Riwayat Kejadian Lengkap',
+      'feat.4Desc':        'Semua kejadian tersimpan aman di cloud. Filter berdasarkan tanggal dan pantau tren kesehatan orang tua tercinta dari waktu ke waktu.',
+      'feat.5Title':       'Pantauan Real-time',
+      'feat.5Desc':        'Pantau posisi dan aktivitas orang tua tercinta secara langsung dari aplikasi — berdiri, duduk, berbaring, atau jatuh.',
+      'feat.6Title':       'Bisa di-Install seperti Aplikasi',
+      'feat.6Desc':        'Aplikasi web progresif yang dapat diinstal di HP seperti aplikasi native. Akses offline dan tampilan full-screen.',
+
+      'tech.tag':          'Spesifikasi Teknis',
+      'tech.titlePart1':   'Dibangun dengan',
+      'tech.titlePart2':   'Teknologi Terpercaya',
+      'tech.desc':         'Kombinasi hardware IoT berkualitas tinggi dengan platform cloud modern untuk keandalan 24/7.',
+      'tech.spec1':        'Mikrokontroler',
+      'tech.spec2':        'Sensor Gerak 6-Axis',
+      'tech.spec3':        'Bluetooth Low Energy',
+      'tech.spec4':        'Cloud Realtime DB',
+      'tech.spec5':        'Latensi Deteksi',
+      'tech.spec6':        'Akurasi Sudut',
+      'tech.spec7':        'Jangkauan Bluetooth',
+      'tech.spec8':        'Sampling Rate',
+
+      'part.tag':          'Partner & Dukungan',
+      'part.title':        'Didukung Bersama',
+      'part.desc':         'GeriBand dikembangkan bersama institusi dan mitra yang peduli terhadap keselamatan dan kesehatan orang tua tercinta di Indonesia.',
+      'part.logo':         'Logo Partner',
+
+      'team.tag':          'Tim Pengembang',
+      'team.titlePart1':   'Orang-orang di Balik',
+      'team.desc':         'Tim muda berdedikasi yang bersatu untuk menciptakan solusi teknologi kesehatan untuk menjaga orang tua tercinta di Indonesia.',
+      'cta.badge':         'Tersedia Sekarang',
+      'cta.title':         'Mulai Lindungi Orang Tua Tercinta<br>Hari Ini',
+      'cta.desc':          'Daftar gratis dan hubungkan perangkat GeriBand dalam hitungan menit.<br>Ketenangan pikiran Anda, keselamatan mereka.',
+      'cta.primary':       'Daftar Gratis',
+      'cta.secondary':     'Pelajari Lebih Lanjut',
+
+      'footer.tagline':    'Pendeteksi Jatuh Cerdas untuk Menjaga Orang Tua Tercinta — Didukung IoT',
+      'footer.home':       'Beranda',
+      'footer.app':        'Aplikasi',
+      'footer.copy':       '© 2025 GeriBand. Dikembangkan dengan cinta untuk orang tua tercinta di Indonesia.',
+    },
+
+    en: {
+      'meta.title':        'GeriBand — Protect Your Aging Parents from Falls',
+      'meta.description':  'GeriBand — IoT smart belt that detects falls to keep your aging parents safe.',
+
+      'nav.howItWorks':    'How It Works',
+      'nav.features':      'Features',
+      'nav.tech':          'Technology',
+      'nav.team':          'Team',
+      'nav.partners':      'Partners',
+      'nav.cta':           'Open App',
+
+      'hero.badge':        'IoT Smart Health — ESP32 + MPU6050',
+      'hero.titlePart1':   'Protect Your',
+      'hero.titleHighlight1': 'Beloved Parents',
+      'hero.titlePart2':   'from the Risk of',
+      'hero.titleHighlight2': 'Falls',
+      'hero.desc':         'GeriBand is an IoT smart belt that detects falls in real time, sends emergency alerts, and helps you watch over your aging parents from anywhere via smartphone.',
+      'hero.ctaPrimary':   'Start Monitoring Now',
+      'hero.ctaSecondary': 'See Demo',
+      'hero.stat1Label':   'Angle accuracy',
+      'hero.stat2Label':   'Detection response',
+      'hero.stat3Label':   'Active monitoring',
+      'hero.devicePhoto':  'Device Photo',
+      'hero.sensorActive': 'Sensor Active',
+      'hero.floatCard1Title': 'Real-time Data',
+      'hero.floatCard1Sub':   'Accelerometer & Gyroscope',
+      'hero.floatCard2Title': 'Instant Alerts',
+      'hero.floatCard2Sub':   'Push & Emergency Sound',
+
+      'hiw.tag':           'How It Works',
+      'hiw.title':         'Three Simple Steps',
+      'hiw.desc':          'Advanced technology wrapped in a simple experience — from putting on the belt to remote monitoring.',
+      'hiw.step1Title':    'Put on the GeriBand Belt',
+      'hiw.step1Desc':     'Your mom or dad simply wears the GeriBand belt at their waist like a regular belt. The sensor inside monitors every movement with precision.',
+      'hiw.step2Title':    'Connect via Bluetooth',
+      'hiw.step2Desc':     'Open the GeriBand app on your smartphone and connect to the belt via Bluetooth. Stable connection within a 10-meter range — even without Internet.',
+      'hiw.step3Title':    'Receive Emergency Alerts',
+      'hiw.step3Desc':     'When a fall is detected, the system instantly triggers an audible alarm, a phone notification, and automatically logs the event to history.',
+
+      'feat.tag':          'Key Features',
+      'feat.titlePart1':   'Complete, Reliable,',
+      'feat.titleHighlight': 'Smart',
+      'feat.desc':         'Designed specifically to help you care for your aging parents — with the latest technology while remaining easy to use.',
+      'feat.1Title':       'Automatic Fall Detection',
+      'feat.1Desc':        'Smart motion-sensor algorithms detect fall events in real time with sub-2-second response.',
+      'feat.2Title':       'Stable Connectivity',
+      'feat.2Desc':        'Low-power Bluetooth connection with a 10-meter range. Automatic reconnect when the link is lost.',
+      'feat.3Title':       'Notifications & Alarm',
+      'feat.3Desc':        "Push notifications direct to the caregiver's phone, plus an emergency sound alarm from the device for fast response.",
+      'feat.4Title':       'Complete Event History',
+      'feat.4Desc':        "Every event is safely stored in the cloud. Filter by date and analyze your loved one's health trends over time.",
+      'feat.5Title':       'Real-time Monitoring',
+      'feat.5Desc':        "See your loved one's posture and activity live from the app — standing, sitting, lying down, or fallen.",
+      'feat.6Title':       'Installable Like an App',
+      'feat.6Desc':        'A progressive web app that installs on your phone like a native app. Offline access and full-screen experience.',
+
+      'tech.tag':          'Technical Specs',
+      'tech.titlePart1':   'Built with',
+      'tech.titlePart2':   'Trusted Technology',
+      'tech.desc':         'A combination of premium IoT hardware and a modern cloud platform for 24/7 reliability.',
+      'tech.spec1':        'Microcontroller',
+      'tech.spec2':        '6-Axis Motion Sensor',
+      'tech.spec3':        'Bluetooth Low Energy',
+      'tech.spec4':        'Cloud Realtime DB',
+      'tech.spec5':        'Detection Latency',
+      'tech.spec6':        'Angle Accuracy',
+      'tech.spec7':        'Bluetooth Range',
+      'tech.spec8':        'Sampling Rate',
+
+      'part.tag':          'Partners & Support',
+      'part.title':        'Supported Together',
+      'part.desc':         'GeriBand is developed together with institutions and partners who care about the safety and health of aging parents in Indonesia.',
+      'part.logo':         'Partner Logo',
+
+      'team.tag':          'Development Team',
+      'team.titlePart1':   'The People Behind',
+      'team.desc':         'A dedicated young team united to build health-technology solutions that help care for beloved parents in Indonesia.',
+      'cta.badge':         'Available Now',
+      'cta.title':         'Start Protecting Your Beloved Parents<br>Today',
+      'cta.desc':          'Sign up for free and connect your GeriBand device in minutes.<br>Your peace of mind, their safety.',
+      'cta.primary':       'Sign Up Free',
+      'cta.secondary':     'Learn More',
+
+      'footer.tagline':    'Smart Fall Detection to Protect Your Beloved Parents — Powered by IoT',
+      'footer.home':       'Home',
+      'footer.app':        'App',
+      'footer.copy':       '© 2025 GeriBand. Built with love for beloved parents in Indonesia.',
+    }
+  };
+
+  const LANG_KEY = 'gb_lang_landing';
+
+  function getLang() {
+    const saved = localStorage.getItem(LANG_KEY);
+    if (saved === 'id' || saved === 'en') return saved;
+    // Fallback: detect from browser
+    return (navigator.language || 'id').toLowerCase().startsWith('en') ? 'en' : 'id';
+  }
+
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.id;
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = dict[key];
+      if (val === undefined) return;
+
+      // Title tag
+      if (el.tagName === 'TITLE') { el.textContent = val; return; }
+      // Meta tags — update "content" attr
+      if (el.tagName === 'META')  { el.setAttribute('content', val); return; }
+      // Allow HTML (e.g. <br>) only when explicitly opted in
+      if (el.hasAttribute('data-i18n-html')) { el.innerHTML = val; return; }
+      // Default: text content (safe from XSS)
+      el.textContent = val;
+    });
+
+    // Toggle button active states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+      btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+    });
+  }
+
+  function setLang(lang) {
+    if (lang !== 'id' && lang !== 'en') return;
+    localStorage.setItem(LANG_KEY, lang);
+    applyLang(lang);
+  }
+
+  /* ── Navbar scroll effect ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ── Hamburger ── */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  document.addEventListener('click', e => {
+    if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) closeMobile();
+  });
+
+  /* ── Scroll animations ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── Language toggle click handler ── */
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.lang));
+  });
+
+  /* ── Apply initial language on load ── */
+  applyLang(getLang());
+
+  /* ══════════════════════════════════════════════════
+     Service Worker — auto-update on new deploy
+     Clears old cache and reloads page when a new
+     sw.js (different BUILD_ID) is detected.
+     ══════════════════════════════════════════════════ */
+  if ('serviceWorker' in navigator) {
+    let reloadOnce = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloadOnce) return;
+      reloadOnce = true;
+      window.location.reload();
+    });
+
+    navigator.serviceWorker.register('sw.js').then(reg => {
+      if (!reg) return;
+
+      const bump = nw => nw && nw.addEventListener('statechange', () => {
+        if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+          nw.postMessage({ type: 'SKIP_WAITING' });
+        }
+      });
+      if (reg.waiting) bump(reg.waiting);
+      reg.addEventListener('updatefound', () => bump(reg.installing));
+
+      const check = () => reg.update().catch(() => {});
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') check();
+      });
+      setInterval(check, 60 * 60 * 1000);
+    }).catch(() => {});
+  }
+
+  /* ══════════════════════════════════════════════════
+     Pre-loader — hide once all assets (CSS, fonts,
+     images) finish loading. Fallback timeout 6s.
+     ══════════════════════════════════════════════════ */
+  (function () {
+    var loader = document.getElementById('page-loader');
+    if (!loader) return;
+
+    var hidden = false;
+    function hideLoader() {
+      if (hidden) return;
+      hidden = true;
+      document.body.classList.remove('preloading');
+      loader.classList.add('hidden');
+      setTimeout(function () {
+        if (loader.parentNode) loader.parentNode.removeChild(loader);
+      }, 550);
+    }
+
+    var loadDone = (document.readyState === 'complete')
+      ? Promise.resolve()
+      : new Promise(function (r) { window.addEventListener('load', r, { once: true }); });
+
+    var fontsDone = (document.fonts && document.fonts.ready)
+      ? document.fonts.ready
+      : Promise.resolve();
+
+    Promise.all([loadDone, fontsDone]).then(function () {
+      // tiny buffer so first frame uses final layout
+      setTimeout(hideLoader, 180);
+    });
+
+    // Safety net: never hang on the spinner
+    setTimeout(hideLoader, 6000);
+  })();
+</script>
+</body>
+</html>

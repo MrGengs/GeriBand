@@ -1,0 +1,79 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper Functions ───────────────────────────────────
+    // Check if the request is from an authenticated user
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Check if the authenticated user is accessing their own document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Validate required string field is present and not empty
+    function hasField(field) {
+      return field in request.resource.data && request.resource.data[field] is string;
+    }
+
+    // ── Users Collection ───────────────────────────────────
+    // Each user can only read and write their own document.
+    match /users/{userId} {
+
+      // READ: Only the owner can read their own profile
+      allow read: if isOwner(userId);
+
+      // CREATE: Authenticated user can create their own document
+      // Must include uid matching their auth UID and a valid email
+      allow create: if isOwner(userId)
+        && request.resource.data.uid == request.auth.uid
+        && hasField('email')
+        && request.resource.data.email.size() > 0
+        && request.resource.data.email.size() <= 254;
+
+      // UPDATE: Owner can update their document
+      // Cannot change the uid field to something else
+      // Cannot change the email to an empty string
+      allow update: if isOwner(userId)
+        && request.resource.data.uid == resource.data.uid
+        && (
+          !('email' in request.resource.data)
+          || request.resource.data.email == resource.data.email
+          || (request.resource.data.email is string && request.resource.data.email.size() > 0)
+        );
+
+      // DELETE: Not allowed from client-side
+      allow delete: if false;
+
+      // ── Events Subcollection ────────────────────────────
+      // /users/{userId}/events/{eventId}
+      // Stores fall-detection history per user
+      match /events/{eventId} {
+
+        // READ: Only the owner can read their event history
+        allow read: if isOwner(userId);
+
+        // CREATE: Authenticated owner can append new events
+        // Must have a string `type` and a number `timestamp`
+        allow create: if isOwner(userId)
+          && request.resource.data.type is string
+          && request.resource.data.type.size() > 0
+          && request.resource.data.type.size() <= 32
+          && request.resource.data.timestamp is number;
+
+        // UPDATE: Events are immutable once created
+        allow update: if false;
+
+        // DELETE: Owner can delete their own events (Clear History)
+        allow delete: if isOwner(userId);
+      }
+    }
+
+    // ── Deny everything else ───────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
